@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'main/img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'main/img/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'main/img/favicons/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'main/img/favicons/safari-pinned-tab.svg' %}" color="#0500f9">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="{% block description_tag %}{% endblock %}">
+    <meta name="robots" content="index, follow">
+    <meta user-scalable="no">
+    <title>{% block title_tag %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DFT0FHX1JR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DFT0FHX1JR');
+    </script>
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary bg_orange">
+        <div class="container-fluid">
+            <a href="{% url 'main' %}">
+                <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="25.6066" cy="25.2132" rx="17.5502" ry="18.1066" transform="rotate(45 25.6066 25.2132)" fill="#0500F9"/>
+                    <ellipse cx="27.9334" cy="27.54" rx="14.2596" ry="14.7116" transform="rotate(45 27.9334 27.54)" fill="#FAFAFA"/>
+                    <path d="M38.0165 37.6231C33.1551 42.4845 25.3944 42.6056 20.6824 37.8936C15.9704 33.1816 16.0915 25.4209 20.9529 20.5595C25.8142 15.6981 33.575 15.5771 38.287 20.289C42.9989 25.001 42.8779 32.7618 38.0165 37.6231Z" fill="#0500F9"/>
+                    <ellipse cx="32.5872" cy="32.1938" rx="7.67823" ry="7.92164" transform="rotate(45 32.5872 32.1938)" fill="white"/>
+                    <path d="M38.0165 37.6231C35.8068 39.8328 32.2792 39.8879 30.1374 37.7461C27.9956 35.6043 28.0506 32.0766 30.2603 29.8669C32.47 27.6572 35.9976 27.6022 38.1394 29.744C40.2813 31.8858 40.2262 35.4134 38.0165 37.6231Z" fill="#0500F9"/>
+                </svg>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'main' %}#prices">Цены</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'all_publications' %}">Все работы</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Категории
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for category in list_of_categories %}
+                                    <li><a class="dropdown-item text-wrap" href="{% url category %}">{% cycle list_of_categories_ru.0 list_of_categories_ru.1 list_of_categories_ru.2 list_of_categories_ru.3 list_of_categories_ru.4 list_of_categories_ru.5 list_of_categories_ru.6 list_of_categories_ru.7 list_of_categories_ru.8 list_of_categories_ru.9 list_of_categories_ru.10 list_of_categories_ru.11 %}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Контакты
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="https://t.me/PrYaNiChEk09" rel="nofollow" target="_blank" class="text-decoration-none orange">
+                                        Telegram
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="https://vk.com/id237815482" rel="nofollow" target="_blank" class="text-decoration-none orange">
+                                        Вконтакте
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="tel: +79215936639" class="text-decoration-none orange">
+                                        Позвонить по телефону
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="https://wa.me/79215936639" rel="nofollow" target="_blank" class="text-decoration-none orange">
+                                        WhatsApp
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'certificates' %}">Сертификаты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'flowers_for_cakes' %}">Цветы на торты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="py-5 my-5" id="maintext"> <!--main text-->
+            <h1 class="text-center align-bottom col-lg-8 col-md-8 mx-auto fw-medium">{% block topic %}{% endblock %}</h1>
+            <h2 class="text-center fs-3 align-bottom col-lg-8 col-md-8 mx-auto">{% block subtopic %}{% endblock %}</h2>
+        </div>
+        <!-- Button trigger modal -->
+        {% if button %}
+        <button type="button" class="btn position-absolute top-75 start-50 translate-middle bg_orange fs-4" data-bs-toggle="modal" data-bs-target="#order">
+            Заказать
+        </button>
+
+          <!-- Modal -->
+        <div class="modal fade" id="order" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title fs-3" id="exampleModalLabel">Контакты</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="fs-4">Заказ принимается 3-4 дня до желаемой даты доставки</h5>
+                        <h5>
+                            <a href="https://t.me/PrYaNiChEk09" rel="nofollow" target="_blank" class="text-decoration-none orange">
+                                Telegram
+                            </a>
+                        </h5>
+                        <h5>
+                            <a href="https://vk.com/id237815482" rel="nofollow" target="_blank" class="text-decoration-none orange">
+                                Вконтакте
+                            </a>
+                        </h5>
+                        <h5>
+                            <a href="tel: +79215936639" class="text-decoration-none orange">
+                                Позвонить по телефону
+                            </a>
+                        </h5>
+                        <h5>
+                            <a href="https://wa.me/79215936639" rel="nofollow" target="_blank" class="text-decoration-none orange">
+                                WhatsApp
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% block body %}{% endblock %}
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <a href="{% url 'main' %}">
+                        <svg width="51" height="51" viewBox="0 0 1132 1132" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="565.686" cy="565.685" r="400" transform="rotate(45 565.686 565.685)" fill="#6C757D"/>
+                            <circle cx="618.719" cy="618.718" r="325" transform="rotate(45 618.719 618.718)" fill="#FAFAFA"/>
+                            <path d="M848.528 848.528C741.134 955.922 567.014 955.922 459.619 848.528C352.225 741.134 352.225 567.014 459.619 459.619C567.014 352.225 741.134 352.225 848.528 459.619C955.922 567.014 955.922 741.134 848.528 848.528Z" fill="#6C757D"/>
+                            <circle cx="724.785" cy="724.784" r="175" transform="rotate(45 724.785 724.784)" fill="white"/>
+                            <path d="M848.528 848.528C799.713 897.344 720.567 897.344 671.752 848.528C622.936 799.713 622.936 720.567 671.752 671.751C720.567 622.936 799.713 622.936 848.528 671.751C897.344 720.567 897.344 799.713 848.528 848.528Z" fill="#6C757D"/>
+                        </svg>
+                    </a>
+                    <span class="mb-3 mb-md-0 text-muted">© {% now "Y" %} ProstoPryanik</span>
+                </div>                      
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3">
+                        <a class="text-muted text-decoration-none" href="https://t.me/ProstoPryanik1" target="_blank">Telegram</a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="text-muted text-decoration-none" href="https://vk.com/prostopryanik1" target="_blank">VK</a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="text-muted text-decoration-none" href="mailto:prostopryanik11@gmail.com" target="_blank">Почта</a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="text-muted text-decoration-none" href="https://wa.me/79215936639" target="_blank">WhatsApp</a>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

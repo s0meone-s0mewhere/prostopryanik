@@ -1,0 +1,54 @@
+body{
+    font-family: 'Comfortaa';
+    font-style: normal;
+    background-color: #E7E8D1;
+    background-attachment: fixed;
+    background-size: contain;
+}
+#maintext{
+    height: 300px;
+}
+header{
+    background-color: #B85042;
+}
+#mainbutton{
+    background-color: #B85042;
+    border-radius: 0%;
+    margin: auto;
+    cursor: pointer;
+}
+#modalwindow{
+    border-radius: 0%;
+}
+.orange{
+    color: #B85042;
+}
+.bg_orange{
+    background-color: #B85042;
+}
+.black{
+    color: #000000
+}
+.iconsize{
+    height: 60px;
+    width: 60px;
+}
+.white{
+    color: #ffffff;
+}
+.bg_light_oil{
+    background-color: #A7BEAE;
+}
+.bg_red{
+    background-color: #B85042;
+}
+
+.bg_beige{
+    background-color: #E7E8D1;
+}
+
+.img_16x9{
+    aspect-ratio: 16 / 9; 
+    object-fit: contain; 
+    background-color: #8E8E8E;
+}

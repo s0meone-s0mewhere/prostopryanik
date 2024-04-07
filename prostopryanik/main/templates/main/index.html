@@ -1,0 +1,299 @@
+{% extends 'main/header_and_footer.html' %}
+{% load static %}
+
+{% block title_tag %}
+Официальный сайт кондитерской ProstoPryanik
+{% endblock %}
+
+{% block description_tag %}
+Официальный сайт кондитерской ProstoPryanik. Скидка 10% при первом заказе. Делаем торты, торты без сахара, бенто-торты без сахара, капкейки, капкейки без сахара, пряники, леденцы и кейк-попсы. 🌐Переходите на наш сайт! Звоните: 📞+7(921)593-66-39
+{% endblock %}
+
+{% block topic %}
+Официальный сайт кондитерской ProstoPryanik
+{% endblock %}
+
+{% block subtopic %}
+Делаем сладости под все ваши пожелания в кротчайшие сроки за адекватную цену
+{% endblock %}
+
+{% block body %}
+        <div class="position-absolute top-100 ">
+            <div class="album py-5">
+                <div class="container">
+                    <div class="text-center py-3">
+                        <h2 class="my-4 orange">Почему стоит выбрать именно нас?</h2>
+                        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                            <div class="col h-100">
+                                <div class="card text-bg-light border-dark mb-4 routed-3 shadow-sm">
+                                    <div class="card-header py-3 bg_red">
+                                        <h3>Качество продукции</h3>
+                                    </div>
+                                    <div class="card-body bg_light_oil">
+                                        <ul>
+                                            <li>Продукты нашей кондитерской изготавливаются вручную из натуральных ингредиентов без использования консервантов и искусственных добавок.</li>
+                                            <li>В производстве используются только свежие и качественные ингредиенты, что позволяет получить вкусный и полезный продукт.</li>
+                                            <li>Все продукты, используемые при изготовлении, сделаны известными брендами. Например, мы используем бельгийский шоколад Calebaut и изомальт Beneo.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col h-100">
+                                <div class="card text-bg-light border-dark mb-4 routed-3 shadow-sm">
+                                    <div class="card-header py-3 bg_red">
+                                        <h3>Уникальность продукции</h3>
+                                    </div>
+                                    <div class="card-body bg_light_oil">
+                                        <ul>
+                                            <li>Наша продукция является уникальной и неповторимой, так как каждый штучный экземпляр изготавливается вручную.</li>
+                                            <li>Мы можем предложить не только традиционные виды продукции, но и эксклюзивные десерты, которые невозможно купить в обычных магазинах.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col h-100">
+                                <div class="card text-bg-light border-dark mb-4 routed-3 shadow-sm">
+                                    <div class="card-header py-3 bg_red">
+                                        <h3>Личный подход к клиентам</h3>
+                                    </div>
+                                    <div class="card-body bg_light_oil">
+                                        <ul>
+                                            <li>Мы отличаемся индивидуальным подходом к каждому заказчику.</li>
+                                            <li>Готовы учитывать все пожелания и создавать новые варианты продукции.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center py-3">
+                        <h4 class="fs-5 black">Выбор продукции кондитерской ProstoPryanik может стать отличным решением для тех, кто ценит качество, уникальность и индивидуальный подход. Не упустите возможность попробовать настоящие вкусности по низкой цене.</h4>
+                    </div>
+                    <hr class="border-3 opacity-100 orange">
+                    <div class="text-center py-3">
+                        <h2 class="orange">Наши работы</h2>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                        {% if publications %}
+                            {% for publication in publications %}
+                            <div class="col g-2">
+                                <div class="card text-bg-light border-dark routed-3 shadow-sm">
+                                    <div class="">
+                                    {% if publication.photo1 %}
+                                        <img src="{{ publication.photo1.url }}" class="img_16x9 card-img-top img-fluid" alt="{{ publication.title }}" style="width: 100%; height: auto;">
+                                    {% endif %}
+                                    </div>
+                                    <div class="card-body bg_light_oil">
+                                        <h5 class="card-title">{{ publication.title }}</h5>
+                                        <p class="card-text overflow-hidden" style="max-height: 6em; text-overflow: ellipsis;">{{ publication.description }}</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        {% if publication.price %}
+                                            <li class="list-group-item bg_light_oil">{{ publication.price }}₽</li>
+                                        {% endif %}
+                                        <li class="list-group-item bg_light_oil">{{ publication.publication_time }}</li>
+                                        <li class="list-group-item bg_light_oil">
+                                            {% url 'publication_page' publication.slug as publication_url %}
+                                            <a href="{{ publication_url }}" class="btn bg_red">Подробнее</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="{% url 'all_publications' %}" class="btn bg_red fs-4">Все работы</a>
+                    </div>
+                    <hr class="border-3 opacity-100 orange">
+                    <div class="text-center py-3">
+                        <h2 class="orange fs-1">АКЦИЯ!</h2>
+                        <h3 class="fs-2">При первом заказе <h3 class="orange fs-1">скидка 10%</h3></h3>
+                    </div>
+                    <hr class="border-3 opacity-100 orange">
+                    <div class="text-center">
+                        <h2 class="orange">Наша фишка - делать тортики без сахара и глютена.</h2>
+                        <h3 class="black">Если вы являетесь диабетиком или просто следите за здоровьем или фигурой, то вы пришли по адресу. Например, мы заменяем сахар на эритрит, а обычную муку - на амарантувую. Таким образом, вы можете съесть вкусный тортик без вреда для здоровья.</h2>
+                    </div>
+                    <hr class="border-3 opacity-100 orange">
+                    <div class="text-center py-3">
+                        <h2 class="orange">Наши торты идеально подходят для любых праздников.</h2>
+                    </div>
+                    <div class="row row-cols-1 row-cols-sm-2">
+                        <div class="text-center">
+                            <h3 class="align-middle black fs-5">Торт - это традиционное украшение любого праздника, и торты от ProstoPryanik - лучший выбор для тех, кто хочет порадовать себя и своих гостей настоящими вкусностями. Независимо от того, какой праздник вы готовитесь отмечать - день рождения, юбилей, свадьбу или корпоратив - у нас есть идеальный торт на любой вкус. Мы готовим традиционные торты, а также эксклюзивные десерты, которые невозможно приобрести в обычных магазинах.</h3>
+                        </div>
+                        <div id="slider2" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                            {% if festive_cakes %}
+                                {% for festive_cake in festive_cakes %}
+                                    {% if forloop.first %}
+                                        <div class="carousel-item active">
+                                    {% else %}
+                                        <div class="carousel-item">
+                                    {% endif %}
+                                            <img src="{{ festive_cake.photo1.url }}" class="img_16x9 d-block w-100" alt="{{ festive_cake.title }}">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <p>{{ festive_cake.title }}</p>
+                                            </div>
+                                        </div>
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#slider2" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#slider2" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-center py-3">
+                        <h3 class="fs-2 black">Но можно есть наши торты и не по праздникам :)</h3>
+                    </div>
+                    <hr class="border-3 opacity-100 orange">
+                    <div class="text-center py-3">
+                        <h2 class="orange">И не только торты!</h2>
+                    </div>
+                    <div class="row row-cols-1 row-cols-sm-2">
+                        <div class="text-center order-sm-2">
+                            <h3 class="align-middle black fs-5">У нас вы найдете капкейки разных вкусов, включая капкейки без сахара - отличную альтернативу для здорового питания. Леденцы также доступны в двух вариантах: из изомальта и сахара. Наши расписные пряники и конфеты из бельгийского шоколада - оригинальный подарок и десерт на любой праздник. Кстати, Кейк-попсы можно декорировать как угодно по своему вкусу, например, сделать их в виде какого-то персонажа. А мармелад - превосходный десерт на любое время дня.</h3>
+                        </div>
+                        <div id="slider3" class="carousel slide order-sm-1" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                {% if not_cakes %}
+                                {% for item in not_cakes %}
+                                    {% if forloop.first %}
+                                        <div class="carousel-item active">
+                                    {% else %}
+                                        <div class="carousel-item">
+                                    {% endif %}
+                                            <img src="{{ item.photo1.url }}" class="img_16x9 d-block w-100" alt="{{ item.title }}">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <p>{{ item.title }}</p>
+                                            </div>
+                                        </div>
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#slider3" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#slider3" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <hr class="border-3 opacity-100 bg_olive">
+                    <div class="text-center py-3">
+                        <h2 class="orange">Начинки</h2>
+                    </div>
+                    <div class="row row-cols-1 row-cols-sm-2">
+                        <div class="text-center">
+                            <h3 class="align-middle black fs-5">Наша домашняя кондитерская готова порадовать вас любым вкусом, предлагая широкий выбор начинок для наших изделий. Мы используем только качественные ингредиенты, чтобы создавать торты, которые будут радовать вас свежестью и вкусом. У нас есть начинки от классических, таких как ваниль и шоколад, до экзотических, таких как манго и ананас. Мы также предлагаем начинки для тех, кто следит за своим здоровьем - без сахара и без глютена. Попробуйте наши торты и наслаждайтесь вкусом качественных лакомств!</h3>
+                        </div>
+                        <div id="slider4" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                            {% if fillings %}
+                                {% for filling in fillings %}
+                                    {% if forloop.first %}
+                                        <div class="carousel-item active">
+                                    {% else %}
+                                        <div class="carousel-item">
+                                    {% endif %}
+                                            <img src="{{ filling.photo.url }}" class="img_16x9 d-block w-100" alt="{{ filling.title }}">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <p>{{ filling.title }}</p>
+                                            </div>
+                                        </div>
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#slider4" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#slider4" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <hr class="border-3 opacity-100 orange">
+                    <div class="text-center py-3">
+                        <h2 class="orange">Цены</h2>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center" id="prices">
+                        {% if list_of_categories and list_of_prices and min_counts %}
+                            {% for category in list_of_categories %}
+                                <div class="col g-2">
+                                    <div class="card text-bg-light border-dark routed-3 shadow-sm">
+                                        <div class="card-header py-3 bg_red">
+                                            <a href="{% url category %}" class="fs-3 black">{% cycle list_of_categories_ru.0 list_of_categories_ru.1 list_of_categories_ru.2 list_of_categories_ru.3 list_of_categories_ru.4 list_of_categories_ru.5 list_of_categories_ru.6 list_of_categories_ru.7 list_of_categories_ru.8 list_of_categories_ru.9 list_of_categories_ru.10 list_of_categories_ru.11 %}</a>
+                                        </div>
+                                        <div class="card-body bg_light_oil">
+                                            <h4 class="card-title fs-1 pricing-card-title">От {% cycle list_of_prices.0 list_of_prices.1 list_of_prices.2 list_of_prices.3 list_of_prices.4 list_of_prices.5 list_of_prices.6 list_of_prices.7 list_of_prices.8 list_of_prices.9 list_of_prices.10 list_of_prices.11 %}*</h4>
+                                            <p class="card-text black">{% cycle min_counts.0 min_counts.1 min_counts.2 min_counts.3 min_counts.4 min_counts.5 min_counts.6 min_counts.7 min_counts.8 min_counts.9 min_counts.10 min_counts.11 %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="text-center">
+                        <h6>*цена торта может варьироваться в зависимости от сложности декора</h6>
+                    </div>
+                    <hr class="border-3 opacity-100 orange">
+                    <div class="text-center py-3">
+                        <h2 class="orange">Наши сертификаты и дипломы</h2>
+                    </div>
+                    {% if certificates %}
+                    <div class="album">
+                        <div class="container">
+                            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                                {% for certificate in certificates %}
+                                    <div class="col py-3">
+                                        <div >
+                                        {% if certificate %}
+                                            <img src="{{ certificate.photo.url }}" class="img_16x9 card-img-top img-fluid" alt="{{ publication.title }}">
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="d-flex justify-content-center">
+                        <a href="{% url 'certificates' %}" class="btn bg_red fs-4">Все сертификаты</a>
+                    </div>
+                    <hr class="border-3 opacity-100 orange">
+                    <div class="text-center py-3">
+                        <h2 class="orange">Цветы на торт</h2>
+                        <p>Украшение, которое добавляет элегантность и красоту нашим тортам</p>
+                    </div>
+                    {% if flowers %}
+                    <div class="album">
+                        <div class="container">
+                            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                                {% for flower in flowers %}
+                                    <div class="col py-3">
+                                        <div >
+                                        {% if flower %}
+                                            <img src="{{ flower.photo.url }}" class="img_16x9 card-img-top img-fluid" alt="{{ publication.title }}">
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="d-flex justify-content-center">
+                        <a href="{% url 'flowers_for_cakes' %}" class="btn bg_red fs-4">Все цветы</a>
+                    </div>
+{% endblock %}

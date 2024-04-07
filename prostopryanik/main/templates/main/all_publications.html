@@ -1,0 +1,101 @@
+{% extends 'main/header_and_footer.html' %}
+{% load static %}
+
+{% block title_tag %}
+Все работы | ProstoPryanik
+{% endblock %}
+
+{% block head %}
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+{% endblock %}
+
+{% block description_tag %}
+Официальный сайт кондитерской ProstoPryanik. Скидка 10% при первом заказе. Делаем торты, торты без сахара, бенто-торты без сахара, капкейки, капкейки без сахара, пряники, леденцы и кейк-попсы. 🌐Переходите на наш сайт! Звоните: 📞+7(921)593-66-39
+{% endblock %}
+
+{% block topic %}
+Наши работы
+{% endblock %}
+
+{% block subtopic %}
+Просмотр работ поможет вам выбрать торт!
+{% endblock %}
+
+{% block body %}
+    <div class="position-absolute top-100">
+        <div class="album py-5">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                    {% for publication in publications %}
+                        <div class="col g-2">
+                            <div class="card text-bg-light border-dark routed-3 shadow-sm">
+                                <div>
+                                    {% if publication.photo1 %}
+                                        <img src="{{ publication.photo1.url }}" loading="lazy" class="img_16x9 card-img-top img-fluid" alt="{{ publication.title }}" style="aspect-ratio: 16 / 9; object-fit: contain; background-color: #8E8E8E;">
+                                        <!-- <div style="aspect-ratio: 16 / 9; background: url('{{ publication.photo1.url }}') no-repeat center; background-size: cover; object-fit: contain;"></div> -->
+                                    {% endif %}
+                                </div>
+                                <div class="card-body bg_light_oil">
+                                    <h5 class="card-title">{{ publication.title }}</h5>
+                                    <p class="card-text" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; word-break: break-word; text-overflow: ellipsis;">{{ publication.description }}</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    {% if publication.price %}
+                                    <li class="list-group-item bg_light_oil">{{ publication.price }}₽</li>
+                                    {% endif %}
+                                    <li class="list-group-item bg_light_oil">{{ publication.publication_time }}</li>
+                                    <li class="list-group-item bg_light_oil">
+                                        {% url 'publication_page' publication.slug as publication_url %}
+                                        <a href="{{ publication_url }}" class="btn bg_red">Подробнее</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div>
+            <nav aria-label="...">
+                <ul class="pagination pagination-sm justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Next">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% for page in paginator.page_range %}
+                        {% if page_obj.number == page %}
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">{{ page }}</span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+{% endblock %}

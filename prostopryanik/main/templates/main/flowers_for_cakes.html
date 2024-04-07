@@ -1,0 +1,36 @@
+{% extends 'main/header_and_footer.html' %}
+{% load static %}
+
+{% block title_tag %}
+Цветы на торт | ProstoPryanik
+{% endblock %}
+
+{% block description_tag %}
+Цветы на торт. Вафельные цветы для тортов
+{% endblock %}
+
+{% block topic %}
+Цветы для тортов
+{% endblock %}
+
+{% block subtopic %}
+Невероятно изящные и карсивые цветы из вафельной бумаги
+{% endblock %}
+
+{% block body %}
+{% if flowers %}
+    <div class="album py-5">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center g-2">
+                {% for flower in flowers %}
+                    <div class="col">
+                        {% if flower %}
+                            <img src="{{ flower.photo.url }}" class="img_16x9 card-img-top img-fluid" alt="цветок на торт">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>    
+{% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'main/header_and_footer.html' %}
+{% load static %}
+
+{% block title_tag %}
+Дипломы | ProstoPryanik
+{% endblock %}
+
+{% block description_tag %}
+Сертификаты и дипломы 
+{% endblock %}
+
+{% block topic %}
+Наши сертифифкаты и дипломы
+{% endblock %}
+
+{% block body %}
+<div class="">
+    {% if certificates %}
+    <div class="album py-5">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center g-2">
+                {% for certificate in certificates %}
+                    <div class="col">
+                        {% if certificate %}
+                            <img src="{{ certificate.photo.url }}" class="img_16x9 card-img-top img-fluid" alt="{{ publication.title }}">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
