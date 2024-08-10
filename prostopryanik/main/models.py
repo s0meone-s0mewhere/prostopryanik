@@ -75,15 +75,19 @@ class Fillings(models.Model):
 
 class Certificates(models.Model):
     photo = models.ImageField(upload_to='certificates/', verbose_name='Фото')
+    publication_time = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата и время публикации')
 
     class Meta:
         verbose_name_plural = 'Сертификаты'
         verbose_name = 'Сертификат'
+        ordering = ['-publication_time']
 
 class FlowersForCakes(models.Model):
     photo = models.ImageField(upload_to='flowers_for_cakes/', verbose_name='Фото')
+    publication_time = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата и время публикации')
 
     class Meta:
         verbose_name_plural = 'Цветы на торт'
         verbose_name = 'Цветок на торт'
+        ordering = ['-publication_time']
 

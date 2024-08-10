@@ -3,3 +3,4 @@ ppenv/
 **/secret_key.py
 **/*.sock
 **/db.sqlite3
+**/media/
